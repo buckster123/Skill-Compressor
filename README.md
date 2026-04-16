@@ -1,4 +1,4 @@
-# skill-compressor
+# Skill-Compressor
 
 A compression skill for AI agent instruction documents. Shrinks `SKILL.md` files, system prompts, and similar structured instructions by 40–55% while preserving every tool name, parameter, threshold, enum value, and edge case.
 
