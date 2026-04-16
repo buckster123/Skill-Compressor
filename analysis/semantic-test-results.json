@@ -1,0 +1,392 @@
+{
+  "cerebrocortex": [
+    {
+      "id": "cc1",
+      "question": "What are the exact weights in the recall ranking blend? List all 4 signals with their percentages.",
+      "type": "numeric_precision",
+      "orig_answer": "According to the skill document, the recall ranking uses a **4-signal blend** with these exact weights:\n\n1. **Vector similarity (semantic meaning)** - 35%\n2. **ACT-R activation (recency + frequency of access)** - 30% \n3. **FSRS retrievability (spaced-repetition freshness)** - 20%\n4. **Salience (importance)** - 15%\n\nThese percentages total 100% and determine how memories are ranked when you call `recall()`.",
+      "comp_answer": "Based on the skill document, the recall ranking blend uses these exact weights:\n\n1. **Vector similarity: 35%**\n2. **ACT-R activation (recency+frequency): 30%** \n3. **FSRS retrievability (spaced-repetition): 20%**\n4. **Salience: 15%**\n\nThis 4-signal blend totals 100% and determines how memories are ranked in recall results.",
+      "orig_input_tokens": 5737,
+      "comp_input_tokens": 4379,
+      "token_savings": 1358,
+      "judgment": {
+        "orig_score": 10,
+        "comp_score": 10,
+        "verdict": "equivalent",
+        "note": "Both answers provide identical, complete, and accurate information about the 4 recall signals and their exact percentages. Formatting differences are minimal."
+      }
+    },
+    {
+      "id": "cc2",
+      "question": "What weight should a 'causal' link have, and what weight should a 'contradicts' link have?",
+      "type": "numeric_precision",
+      "orig_answer": "According to the skill document:\n\n- **`causal` links should have weight 0.9** - this is one of the highest weights because causal relationships (A caused B) represent strong, direct connections that are highly important for understanding and recall.\n\n- **`contradicts` links should have weight 0.3** - this is the lowest weight in the table because contradictory memories should be linked but not heavily reinforced, as you don't want conflicting information to strongly boost each other's activation during recall.",
+      "comp_answer": "Based on the skill document:\n\n- **`causal` links should have weight 0.9** - these are the strongest links since they represent direct cause-and-effect relationships like \"bug\u2192outage\"\n\n- **`contradicts` links should have weight 0.3** - these are the weakest links in the system since they represent opposing information rather than supporting connections\n\nThe document shows `causal` as the highest weighted link type (0.9) while `contradicts` is the lowest (0.3), reflecting that causal relationships are strong positive connections while contradictions are weak negative associations.",
+      "orig_input_tokens": 5740,
+      "comp_input_tokens": 4382,
+      "token_savings": 1358,
+      "judgment": {
+        "orig_score": 10,
+        "comp_score": 10,
+        "verdict": "equivalent",
+        "note": "Both answers provide the correct weights (causal: 0.9, contradicts: 0.3) with accurate explanations of why these weights make sense - causal being strongest due to direct relationships, contradicts being weakest to avoid reinforcing conflicting information."
+      }
+    },
+    {
+      "id": "cc3",
+      "question": "What are the 6 memory types supported by CerebroCortex?",
+      "type": "enum_completeness",
+      "orig_answer": "Based on the skill document, CerebroCortex supports these 6 memory types:\n\n1. **`episodic`** - Events, what happened (e.g., \"User's deploy failed at 3pm due to OOM\")\n2. **`semantic`** - Facts, knowledge (e.g., \"PostgreSQL max connections default is 100\") \n3. **`procedural`** - How-to, workflows (e.g., \"Deploy sequence: test \u2192 build \u2192 push \u2192 apply\")\n4. **`affective`** - Emotional context (e.g., \"User was frustrated after 3rd CI failure\")\n5. **`prospective`** - Future intentions (e.g., \"Need to upgrade Python before Friday\")\n6. **`schematic`** - Patterns, principles (e.g., \"Services skipping staging have 3x more incidents\")\n\nThe system auto-classifies if you omit the type, but being explicit is recommended for better organization and retrieval.",
+      "comp_answer": "Based on the skill document, CerebroCortex supports 6 memory types:\n\n1. **episodic** - for events (e.g., \"deploy failed at 3pm due to OOM\")\n2. **semantic** - for facts (e.g., \"PG max_connections default=100\") \n3. **procedural** - for how-to workflows (e.g., \"deploy: test\u2192build\u2192push\u2192apply\")\n4. **affective** - for emotional context (e.g., \"user frustrated after 3rd CI fail\")\n5. **prospective** - for future intentions (e.g., \"upgrade Python before Friday\")\n6. **schematic** - for patterns (e.g., \"services skipping staging have 3x more incidents\")\n\nThe system auto-classifies if the type is omitted, but explicit classification is recommended for better organization.",
+      "orig_input_tokens": 5732,
+      "comp_input_tokens": 4374,
+      "token_savings": 1358,
+      "judgment": {
+        "orig_score": 10,
+        "comp_score": 10,
+        "verdict": "equivalent",
+        "note": "Both answers correctly list all 6 memory types with accurate descriptions and examples. Orig is slightly more detailed with formatting and explanation, but both are complete and correct."
+      }
+    },
+    {
+      "id": "cc4",
+      "question": "What are the 4 memory durability layers and their half-lives?",
+      "type": "technical_detail",
+      "orig_answer": "According to the skill document, the 4 memory durability layers in CerebroCortex are:\n\n1. **Sensory** - 6 hour half-life\n2. **Working** - 3-day half-life  \n3. **Long-Term** - 30-day half-life\n4. **Cortex** - permanent (no decay)\n\nMemories automatically flow through these layers based on access patterns: Sensory \u2192 Working (automatic on 2nd access) \u2192 Long-Term (5+ accesses, 24h+ old) \u2192 Cortex (Dream Engine only for crystallized knowledge).",
+      "comp_answer": "Based on the skill document, the 4 memory durability layers and their half-lives are:\n\n1. **Sensory** - 6 hour half-life\n2. **Working** - 3-day half-life  \n3. **Long-Term** - 30-day half-life\n4. **Cortex** - permanent (no decay)\n\nMemories automatically promote between layers: Sensory\u2192Working on 2nd access, Working\u2192Long-Term after 5+ accesses and 24+ hours old, and Long-Term\u2192Cortex only through the Dream Engine for crystallized knowledge.",
+      "orig_input_tokens": 5731,
+      "comp_input_tokens": 4373,
+      "token_savings": 1358,
+      "judgment": {
+        "orig_score": 10,
+        "comp_score": 10,
+        "verdict": "equivalent",
+        "note": "Both answers provide identical core information with complete accuracy. Minor stylistic differences in presentation and flow description don't affect the factual content."
+      }
+    },
+    {
+      "id": "cc5",
+      "question": "What are the 6 phases of the Dream Engine consolidation?",
+      "type": "enum_completeness",
+      "orig_answer": "According to the CerebroCortex skill document, the Dream Engine runs 6 phases modeled after biological sleep:\n\n1. **Replay** \u2014 Revisit recent memories, strengthen important ones\n2. **Cluster** \u2014 Group related memories by embedding similarity  \n3. **Abstract** \u2014 Extract schemas/patterns from clusters (LLM-powered)\n4. **Prune** \u2014 Remove low-activation, unlinked memories\n5. **Promote** \u2014 Move high-value memories up layers (working \u2192 long-term \u2192 cortex)\n6. **REM Recombine** \u2014 Discover unexpected cross-domain connections (LLM-powered)\n\nThe full cycle uses approximately 20 LLM calls, though you can run lighter cycles with `max_llm_calls=10` to reduce token costs.",
+      "comp_answer": "Based on the skill document, the 6 phases of the Dream Engine consolidation are:\n\n1. **Replay** \u2014 revisit recent memories and strengthen important ones\n2. **Cluster** \u2014 group memories by embedding similarity  \n3. **Abstract** \u2014 extract schemas from clusters using LLM\n4. **Prune** \u2014 remove low-activation unlinked memories\n5. **Promote** \u2014 move memories from working\u2192long-term\u2192cortex layers\n6. **REM Recombine** \u2014 create unexpected cross-domain connections using LLM\n\nThese phases are modeled after biological sleep cycles and run during `dream_run()`, typically using around 20 LLM calls for a full cycle.",
+      "orig_input_tokens": 5729,
+      "comp_input_tokens": 4371,
+      "token_savings": 1358,
+      "judgment": {
+        "orig_score": 10,
+        "comp_score": 10,
+        "verdict": "equivalent",
+        "note": "Both answers correctly identify all 6 phases with accurate descriptions. Minor formatting differences but equivalent content and completeness."
+      }
+    },
+    {
+      "id": "cc6",
+      "question": "What 3 things should you do at the start of every session?",
+      "type": "procedural",
+      "orig_answer": "Based on the skill document, at the start of every session you should do these 3 things:\n\n1. **Orient yourself** - `session_recall(limit=5)` to see what happened recently\n2. **Check pending tasks** - `list_intentions()` to see what's on your plate\n3. **Check messages** - `check_inbox()` to see if other agents sent you anything\n\nThis gives you context about recent activities, reminds you of outstanding TODOs, and ensures you're aware of any cross-agent communications that need attention.",
+      "comp_answer": "Based on the CerebroCortex skill document, the 3 things you should do at the start of every session are:\n\n1. **`session_recall(limit=5)`** - Load recent session notes to understand what you were working on\n2. **`list_intentions()`** - Check for any pending TODOs/reminders \n3. **`check_inbox()`** - Read any messages from other agents\n\nThese steps help you get oriented by reviewing past context, checking what needs to be done, and seeing any new communications.",
+      "orig_input_tokens": 5730,
+      "comp_input_tokens": 4372,
+      "token_savings": 1358,
+      "judgment": {
+        "orig_score": 10,
+        "comp_score": 10,
+        "verdict": "equivalent",
+        "note": "Both answers correctly identify the three required functions and explain their purposes clearly. Minimal wording differences but identical content and accuracy."
+      }
+    },
+    {
+      "id": "cc7",
+      "question": "What is the alias relationship between memory_store and remember?",
+      "type": "alias_awareness",
+      "orig_answer": "According to the skill document, `mcp_cerebro_memory_store` is an **alias** for `mcp_cerebro_remember` - they are identical functions.\n\nThe document states: \"Don't call both thinking they're different\" because `memory_store` = `remember` - they do exactly the same thing and will store a memory using the full encoding pipeline.",
+      "comp_answer": "According to the skill document, `memory_store` and `remember` are **aliases** - they are equivalent functions that do exactly the same thing.\n\nThe document states: \"`memory_store` \u2261 `remember`\" and warns users not to \"call both thinking they're different\" since they perform identical operations (storing memory through the full encoding pipeline).",
+      "orig_input_tokens": 5727,
+      "comp_input_tokens": 4369,
+      "token_savings": 1358,
+      "judgment": {
+        "orig_score": 8,
+        "comp_score": 9,
+        "verdict": "comp_better",
+        "note": "Both answers correctly identify the alias relationship, but comp_better uses cleaner formatting with the mathematical equivalence symbol and slightly more concise language while maintaining all key information."
+      }
+    },
+    {
+      "id": "cc8",
+      "question": "How many accesses are needed to promote a memory from Working to Long-Term, and how old must it be?",
+      "type": "numeric_precision",
+      "orig_answer": "According to the skill document, to promote a memory from Working to Long-Term layer, it needs:\n\n- **5+ accesses** (recall events)\n- **24+ hours old**\n\nBoth conditions must be met for the automatic promotion to occur.",
+      "comp_answer": "According to the skill document, a memory needs **5+ accesses** and must be **24+ hours old** to be promoted from Working to Long-Term memory.",
+      "orig_input_tokens": 5739,
+      "comp_input_tokens": 4381,
+      "token_savings": 1358,
+      "judgment": {
+        "orig_score": 10,
+        "comp_score": 10,
+        "verdict": "equivalent",
+        "note": "Both answers provide the exact same correct information (5+ accesses, 24+ hours old) with clear formatting. Original adds detail about both conditions being required, but both are complete and accurate."
+      }
+    },
+    {
+      "id": "cc9",
+      "question": "What salience range indicates 'Critical' importance, and give an example?",
+      "type": "range_spec",
+      "orig_answer": "According to the skill document, the **Critical** importance salience range is **0.8-1.0**.\n\n**Examples of Critical importance memories:**\n- User corrections\n- Security issues  \n- Core preferences\n\nThese are memories that should aggressively survive decay and remain highly accessible in the system.",
+      "comp_answer": "According to the skill document, **Critical** importance uses the salience range **0.8\u20131.0**.\n\nExamples of critical memories include:\n- User corrections\n- Security issues  \n- Core preferences\n\nThese are memories with the highest survival rate against decay and represent information that's essential for proper functioning.",
+      "orig_input_tokens": 5731,
+      "comp_input_tokens": 4373,
+      "token_savings": 1358,
+      "judgment": {
+        "orig_score": 10,
+        "comp_score": 10,
+        "verdict": "equivalent",
+        "note": "Both answers correctly state the 0.8-1.0 range and provide the exact same three examples. Minor stylistic differences (hyphen vs dash, wording variations) don't affect accuracy or completeness."
+      }
+    },
+    {
+      "id": "cc10",
+      "question": "What are the 4 episode step roles?",
+      "type": "enum_completeness",
+      "orig_answer": "Based on the skill document, there are 4 episode step roles:\n\n1. **`event`** - Something that happened (this is the default role)\n2. **`context`** - Background information and observations  \n3. **`outcome`** - The result of actions taken\n4. **`reflection`** - Lessons learned, insights, and feelings\n\nThese roles help structure the narrative flow when recording event sequences with `episode_add_step()`.",
+      "comp_answer": "Based on the skill document, the 4 episode step roles are:\n\n1. **`event`** (default) - for actions and occurrences\n2. **`context`** - for background information and observations  \n3. **`outcome`** - for results and what happened\n4. **`reflection`** - for lessons learned and insights\n\nThese roles help structure episodes into a coherent narrative when recording multi-step processes like debugging sessions or meetings.",
+      "orig_input_tokens": 5725,
+      "comp_input_tokens": 4367,
+      "token_savings": 1358,
+      "judgment": {
+        "orig_score": 10,
+        "comp_score": 10,
+        "verdict": "equivalent",
+        "note": "Both answers correctly identify all 4 episode step roles with accurate descriptions and note that 'event' is the default. Minor wording differences don't affect accuracy or completeness."
+      }
+    }
+  ],
+  "systematic-debugging": [
+    {
+      "id": "sd1",
+      "question": "What is the 'Rule of Three' threshold, and what should you do when you hit it?",
+      "type": "procedural",
+      "orig_answer": "The Rule of Three is a threshold of **3 failed fix attempts**. When you've tried 3+ fixes that didn't work, you must **STOP** and question the architecture rather than attempting a 4th fix.\n\n**What to do when you hit it:**\n1. **STOP** - Don't attempt Fix #4\n2. **Question the architecture** - This indicates the fundamental pattern/design may be flawed, not just buggy\n3. **Discuss with the user** before attempting more fixes - The issue may require architectural refactoring rather than symptom fixes\n\nThe pattern indicating architectural problems is when each fix reveals new shared state/coupling issues in different places, requiring \"massive refactoring\" to implement properly.",
+      "comp_answer": "According to the systematic-debugging skill:\n\n**Rule of Three threshold:** If you've tried **3 or more fixes** and they've all failed, you must **STOP and question the architecture** rather than attempting a 4th fix.\n\n**What to do when you hit it:**\n1. **Stop attempting more fixes** - don't try fix #4 without architectural discussion\n2. **Question the fundamental architecture** - ask if the pattern/approach is sound rather than continuing to fix symptoms\n3. **Discuss with the user** before proceeding with more fixes\n4. **Consider refactoring the architecture** instead of continuing to patch symptoms\n\nThe skill emphasizes this is \"not a failed hypothesis - this is wrong architecture\" when you see signs like each fix revealing new shared state/coupling problems elsewhere, or each fix creating new symptoms.",
+      "orig_input_tokens": 2819,
+      "comp_input_tokens": 2003,
+      "token_savings": 816,
+      "judgment": {
+        "orig_score": 9,
+        "comp_score": 10,
+        "verdict": "comp_better",
+        "note": "Both answers correctly explain the threshold and core steps. Comp is slightly better with more precise language ('3 or more' vs '3+'), clearer action steps, and includes the key insight about 'not a failed hypothesis - this is wrong architecture' with specific symptoms."
+      }
+    },
+    {
+      "id": "sd2",
+      "question": "What are the first-time fix rates for systematic vs random approaches?",
+      "type": "numeric_precision",
+      "orig_answer": "According to the skill document, the first-time fix rates are:\n\n- **Systematic approach: 95%**\n- **Random fixes approach: 40%**\n\nThe document states this comes from \"debugging sessions\" and shows systematic debugging has more than double the success rate on the first attempt compared to random/guess-and-check approaches.",
+      "comp_answer": "According to the skill document, the first-time fix rates are:\n\n- **Systematic approach**: 95% first-time fix rate\n- **Random fixes approach**: 40% first-time fix rate\n\nThe systematic debugging approach has more than double the success rate for fixing issues on the first attempt.",
+      "orig_input_tokens": 2812,
+      "comp_input_tokens": 1996,
+      "token_savings": 816,
+      "judgment": {
+        "orig_score": 10,
+        "comp_score": 10,
+        "verdict": "equivalent",
+        "note": "Both answers provide the exact correct percentages (95% and 40%) with clear formatting and accurate context about systematic vs random approaches. Minor wording differences don't affect accuracy or completeness."
+      }
+    },
+    {
+      "id": "sd3",
+      "question": "What are the 4 phases of systematic debugging, in order?",
+      "type": "enum_completeness",
+      "orig_answer": "The 4 phases of systematic debugging, in order, are:\n\n1. **Root Cause Investigation** - Find and understand WHY the problem is happening before attempting any fixes\n2. **Pattern Analysis** - Find working examples and identify what's different between working and broken code\n3. **Hypothesis and Testing** - Form a specific hypothesis and test it with minimal changes\n4. **Implementation** - Create a failing test, implement the fix for the root cause, and verify it works",
+      "comp_answer": "The 4 phases of systematic debugging, in order, are:\n\n1. **Root Cause Investigation** - Read error messages, reproduce consistently, check recent changes, gather evidence, and trace data flow to understand WHY the issue occurs\n2. **Pattern Analysis** - Find working examples, compare against references, identify differences, and understand dependencies\n3. **Hypothesis and Testing** - Form a single specific hypothesis, test minimally with one change at a time, and verify results\n4. **Implementation** - Create a failing test, implement a single fix addressing the root cause, and verify the fix works",
+      "orig_input_tokens": 2812,
+      "comp_input_tokens": 1996,
+      "token_savings": 816,
+      "judgment": {
+        "orig_score": 8,
+        "comp_score": 10,
+        "verdict": "comp_better",
+        "note": "Both have correct phases and order. Comp provides much more detailed explanations for each phase while maintaining accuracy, making it significantly more complete and useful."
+      }
+    },
+    {
+      "id": "sd4",
+      "question": "What Hermes tools should be used during Phase 1 investigation?",
+      "type": "tool_knowledge",
+      "orig_answer": "During Phase 1 (Root Cause Investigation), use these Hermes tools:\n\n**`search_files`** \u2014 Find error strings in the codebase, trace function calls, and locate similar patterns. Essential for understanding where errors originate.\n\n**`read_file`** \u2014 Read source code with line numbers for precise analysis of the failing code and related components.\n\n**`terminal`** \u2014 Run tests to reproduce bugs, check git history for recent changes, and execute diagnostic commands.\n\n**`web_search`/`web_extract`** \u2014 Research error messages and library documentation when encountering unfamiliar errors or patterns.\n\nThese tools support the core Phase 1 activities: reading error messages carefully, reproducing issues consistently, checking recent changes, and tracing data flow to identify the root cause.",
+      "comp_answer": "During Phase 1 investigation, use these Hermes tools:\n\n**`search_files`** - Find error strings, function calls, and patterns in the codebase to locate where issues originate. **`read_file`** - Examine source code with line numbers to understand the failing code. **`terminal`** - Run tests to reproduce issues, check git history for recent changes, and gather evidence. **`web_search`/`web_extract`** - Research error messages and library documentation when needed.",
+      "orig_input_tokens": 2813,
+      "comp_input_tokens": 1997,
+      "token_savings": 816,
+      "judgment": {
+        "orig_score": 10,
+        "comp_score": 9,
+        "verdict": "orig_better",
+        "note": "Both cover all expected tools accurately. Original provides more detailed explanations of each tool's purpose and explicitly connects them to Phase 1 activities, while compressed version is more concise but slightly less comprehensive in explaining tool usage."
+      }
+    },
+    {
+      "id": "sd5",
+      "question": "What are the 6 items on the Phase 1 completion checklist?",
+      "type": "procedural",
+      "orig_answer": "According to the Phase 1 completion checklist in the systematic debugging skill, the 6 items are:\n\n1. Error messages fully read and understood\n2. Issue reproduced consistently  \n3. Recent changes identified and reviewed\n4. Evidence gathered (logs, state, data flow)\n5. Problem isolated to specific component/code\n6. Root cause hypothesis formed\n\nThe skill emphasizes you must STOP and not proceed to Phase 2 until you understand WHY the issue is happening.",
+      "comp_answer": "Looking at the Phase 1 Completion Checklist in the skill document, there are **6 items**:\n\n1. [ ] Error messages fully read and understood\n2. [ ] Issue reproduced consistently  \n3. [ ] Recent changes identified and reviewed\n4. [ ] Evidence gathered (logs, state, data flow)\n5. [ ] Problem isolated to specific component/code\n6. [ ] Root cause hypothesis formed\n\nThe document emphasizes: \"STOP: \u00acproceed to Phase 2 until you understand WHY.\"",
+      "orig_input_tokens": 2815,
+      "comp_input_tokens": 1999,
+      "token_savings": 816,
+      "judgment": {
+        "orig_score": 10,
+        "comp_score": 10,
+        "verdict": "equivalent",
+        "note": "Both answers correctly list all 6 Phase 1 checklist items with accurate wording and include the important stopping criterion. Minor formatting differences don't affect accuracy."
+      }
+    },
+    {
+      "id": "sd6",
+      "question": "What patterns indicate an architectural problem rather than a simple bug?",
+      "type": "technical_detail",
+      "orig_answer": "According to the systematic debugging skill, these patterns indicate an architectural problem rather than a simple bug:\n\n**Primary indicators:**\n- **3+ fix attempts have failed** - This is the key threshold where you should stop and question architecture\n- **Each fix reveals new shared state/coupling in a different place** - Problems keep popping up in unexpected components\n- **Fixes require \"massive refactoring\" to implement** - Simple fixes shouldn't need major changes\n- **Each fix creates new symptoms elsewhere** - Fixing one thing breaks something else\n\n**The fundamental issue:** You're dealing with a **wrong architecture**, not a failed hypothesis. The skill emphasizes this is \"NOT a failed hypothesis \u2014 this is a wrong architecture\" and recommends discussing with the user before attempting more fixes rather than continuing to patch symptoms.",
+      "comp_answer": "According to the systematic debugging skill, there are specific patterns that indicate architectural problems rather than simple bugs:\n\n**Primary indicator:** **3+ fixes have failed** - this triggers the \"Rule of Three\" which requires questioning the architecture before attempting more fixes.\n\n**Architectural warning signs:**\n- Each fix reveals new shared state/coupling problems elsewhere in the system\n- Fixes require massive refactoring to implement properly  \n- Each attempted fix creates new symptoms instead of resolving the original issue\n\nWhen these patterns emerge, the skill recommends asking fundamental questions: \"Is this pattern fundamentally sound? Should we refactor the architecture vs. continue fixing symptoms?\" and discussing with the user before attempting more fixes, since this indicates wrong architecture rather than failed hypothesis.",
+      "orig_input_tokens": 2810,
+      "comp_input_tokens": 1994,
+      "token_savings": 816,
+      "judgment": {
+        "orig_score": 9,
+        "comp_score": 9,
+        "verdict": "equivalent",
+        "note": "Both answers accurately capture the key patterns from the expected response - failed fixes revealing new coupling, requiring massive refactoring, and creating new symptoms. Both mention the 3+ fix rule and architectural vs. hypothesis distinction. Very similar quality and completeness."
+      }
+    },
+    {
+      "id": "sd7",
+      "question": "How long does systematic debugging typically take vs random fixes?",
+      "type": "numeric_precision",
+      "orig_answer": "According to the skill document, systematic debugging takes **15-30 minutes to fix** while random fixes approach takes **2-3 hours of thrashing**.\n\nThe document also notes that systematic debugging has a **95% first-time fix rate** compared to **40%** for random fixes, and introduces near zero new bugs versus commonly introducing new bugs with the random approach.\n\nThe key insight is that **systematic debugging is FASTER than guess-and-check thrashing**, even though it might seem slower upfront due to the investigation phases.",
+      "comp_answer": "According to the skill document:\n\n**Systematic debugging:** 15-30 minutes to fix with a 95% first-time fix rate and near zero new bugs.\n\n**Random fixes:** 2-3 hours of thrashing with only a 40% first-time fix rate and new bugs are common.\n\nThe systematic approach is actually 4-6x faster than random debugging, despite seeming slower initially because it requires investigation before fixing.",
+      "orig_input_tokens": 2809,
+      "comp_input_tokens": 1993,
+      "token_savings": 816,
+      "judgment": {
+        "orig_score": 10,
+        "comp_score": 10,
+        "verdict": "equivalent",
+        "note": "Both answers correctly provide the expected timeframes (15-30 min vs 2-3 hours) and add valuable supporting details about success rates and efficiency. Both are accurate and complete."
+      }
+    }
+  ],
+  "github-pr-workflow": [
+    {
+      "id": "gh1",
+      "question": "What are the 5 branch naming prefixes and what are they for?",
+      "type": "enum_completeness",
+      "orig_answer": "Based on the skill document, here are the 5 branch naming prefixes and their purposes:\n\n1. **`feat/`** \u2014 for new features\n2. **`fix/`** \u2014 for bug fixes  \n3. **`refactor/`** \u2014 for code restructuring\n4. **`docs/`** \u2014 for documentation changes\n5. **`ci/`** \u2014 for CI/CD changes\n\nThese follow conventional commit naming patterns to make it clear what type of work is being done in each branch.",
+      "comp_answer": "According to the skill document, the 5 branch naming prefixes are:\n\n1. `feat/` - for new features\n2. `fix/` - for bug fixes  \n3. `refactor/` - for code refactoring\n4. `docs/` - for documentation changes\n5. `ci/` - for CI/CD related changes",
+      "orig_input_tokens": 3369,
+      "comp_input_tokens": 2741,
+      "token_savings": 628,
+      "judgment": {
+        "orig_score": 10,
+        "comp_score": 10,
+        "verdict": "equivalent",
+        "note": "Both answers correctly identify all 5 prefixes with accurate descriptions matching the expected answer, just with minor formatting differences"
+      }
+    },
+    {
+      "id": "gh2",
+      "question": "What are the 3 merge methods available via the GitHub API?",
+      "type": "enum_completeness",
+      "orig_answer": "Based on the skill document, the 3 merge methods available via the GitHub API are:\n\n1. **\"merge\"** - Creates a merge commit\n2. **\"squash\"** - Squashes all commits into a single commit\n3. **\"rebase\"** - Rebases and merges without a merge commit\n\nThese are specified in the `merge_method` parameter when making a PUT request to merge a PR.",
+      "comp_answer": "Based on the skill document, the 3 merge methods available via the GitHub API are:\n\n1. `\"merge\"` - Creates a merge commit\n2. `\"squash\"` - Squashes all commits into a single commit\n3. `\"rebase\"` - Rebases and merges without a merge commit\n\nThese are specified in the `merge_method` parameter when making a PUT request to merge a pull request.",
+      "orig_input_tokens": 3367,
+      "comp_input_tokens": 2739,
+      "token_savings": 628,
+      "judgment": {
+        "orig_score": 9,
+        "comp_score": 9,
+        "verdict": "equivalent",
+        "note": "Both answers correctly identify all 3 merge methods with accurate descriptions. Minor formatting differences (bold vs code formatting, PR vs pull request) are negligible."
+      }
+    },
+    {
+      "id": "gh3",
+      "question": "What is the GitHub API endpoint for creating a pull request?",
+      "type": "api_knowledge",
+      "orig_answer": "Based on the skill document, the GitHub API endpoint for creating a pull request is:\n\n```\nPOST https://api.github.com/repos/{owner}/{repo}/pulls\n```\n\nWhere `{owner}` and `{repo}` are extracted from your git remote URL. The request requires a JSON body with fields like `title`, `body`, `head` (source branch), and `base` (target branch).",
+      "comp_answer": "Based on the skill document, the GitHub API endpoint for creating a pull request is:\n\n**POST** `https://api.github.com/repos/$OWNER/$REPO/pulls`\n\nWhere `$OWNER` is the repository owner and `$REPO` is the repository name. The request requires a JSON body with `title`, `body`, `head` (source branch), and `base` (target branch) fields.",
+      "orig_input_tokens": 3365,
+      "comp_input_tokens": 2737,
+      "token_savings": 628,
+      "judgment": {
+        "orig_score": 10,
+        "comp_score": 10,
+        "verdict": "equivalent",
+        "note": "Both answers provide the correct endpoint with proper HTTP method, accurate parameter explanations, and mention required JSON body fields. Minor formatting differences ({owner}/{repo} vs $OWNER/$REPO) but both are valid conventions."
+      }
+    },
+    {
+      "id": "gh4",
+      "question": "What are the conventional commit types?",
+      "type": "enum_completeness",
+      "orig_answer": "Based on the skill document, the conventional commit types are:\n\n- `feat` \u2014 new features\n- `fix` \u2014 bug fixes  \n- `refactor` \u2014 code restructuring\n- `docs` \u2014 documentation\n- `test` \u2014 test-related changes\n- `ci` \u2014 CI/CD changes\n- `chore` \u2014 maintenance tasks\n- `perf` \u2014 performance improvements\n\nThe document also mentions that commits can optionally include a scope, following the format: `type(scope): short description`.",
+      "comp_answer": "Based on the skill document, the conventional commit types are:\n\n`feat` \u00b7 `fix` \u00b7 `refactor` \u00b7 `docs` \u00b7 `test` \u00b7 `ci` \u00b7 `chore` \u00b7 `perf`\n\nThese are used in the commit format: `type(scope): short description` followed by a body wrapped at 72 characters.",
+      "orig_input_tokens": 3360,
+      "comp_input_tokens": 2732,
+      "token_savings": 628,
+      "judgment": {
+        "orig_score": 10,
+        "comp_score": 8,
+        "verdict": "orig_better",
+        "note": "Both list all 8 correct types, but orig provides helpful descriptions for each type while comp only lists them with formatting info"
+      }
+    },
+    {
+      "id": "gh5",
+      "question": "How do you check out someone else's PR without gh CLI?",
+      "type": "procedural",
+      "orig_answer": "Based on the skill document, here's how to check out someone else's PR without `gh` CLI:\n\n```bash\n# Fetch the PR branch and create a local branch for it\ngit fetch origin pull/N/head:pr-N && git checkout pr-N\n```\n\nReplace `N` with the actual PR number. This creates a local branch called `pr-N` that points to the PR's head commit, allowing you to review and test the changes locally.\n\nFor example, to check out PR #123:\n```bash\ngit fetch origin pull/123/head:pr-123 && git checkout pr-123\n```",
+      "comp_answer": "To checkout someone else's PR without gh CLI, use git fetch with the pull request reference:\n\n```bash\n# Fetch the PR branch and create a local branch\ngit fetch origin pull/N/head:pr-N\ngit checkout pr-N\n```\n\nWhere `N` is the PR number. This fetches the PR's head commit and creates a local branch named `pr-N` that you can then checkout and work with.",
+      "orig_input_tokens": 3366,
+      "comp_input_tokens": 2738,
+      "token_savings": 628,
+      "judgment": {
+        "orig_score": 10,
+        "comp_score": 8,
+        "verdict": "orig_better",
+        "note": "Original provides the exact expected command with && chaining, while comparison splits it into two separate commands. Both are functionally correct but original matches expected format precisely."
+      }
+    },
+    {
+      "id": "gh6",
+      "question": "What is the auto-fix CI loop pattern? How many attempts before asking the user?",
+      "type": "procedural",
+      "orig_answer": "According to the skill document, the auto-fix CI loop pattern is:\n\n1. **Check CI status** \u2192 identify failures\n2. **Read failure logs** \u2192 understand the error  \n3. **Use `read_file` + `patch`/`write_file`** \u2192 fix the code\n4. **`git add . && git commit -m \"fix: ...\" && git push`**\n5. **Wait for CI** \u2192 re-check status\n6. **Repeat if still failing (up to 3 attempts, then ask the user)**\n\nThe pattern allows for **3 attempts** at auto-fixing before asking the user for guidance.",
+      "comp_answer": "Based on the skill document, the auto-fix CI loop pattern is:\n\n1. Check CI \u2192 identify failures\n2. Read failure logs \u2192 understand error\n3. `read_file` + `patch`/`write_file` \u2192 fix code\n4. `git add . && git commit -m \"fix: ...\" && git push`\n5. Wait for CI \u2192 re-check\n6. Repeat if failing (max 3 attempts, then ask user)\n\nThe system will attempt auto-fixes up to **3 times maximum** before asking the user for intervention.",
+      "orig_input_tokens": 3371,
+      "comp_input_tokens": 2743,
+      "token_savings": 628,
+      "judgment": {
+        "orig_score": 10,
+        "comp_score": 10,
+        "verdict": "equivalent",
+        "note": "Both answers accurately describe the 6-step auto-fix CI loop pattern and correctly state the 3-attempt limit before user intervention. Minor formatting differences don't affect accuracy or completeness."
+      }
+    },
+    {
+      "id": "gh7",
+      "question": "How do you enable auto-merge via curl? Which API does it use?",
+      "type": "api_knowledge",
+      "orig_answer": "Auto-merge via curl uses GitHub's **GraphQL API**, not the REST API. Here's how:\n\n**GraphQL API Method:**\n```bash\n# First, get the PR's node_id from REST API\nPR_NODE_ID=$(curl -s \\\n  -H \"Authorization: token $GITHUB_TOKEN\" \\\n  https://api.github.com/repos/$OWNER/$REPO/pulls/$PR_NUMBER \\\n  | python3 -c \"import sys,json; print(json.load(sys.stdin)['node_id'])\")\n\n# Then enable auto-merge via GraphQL\ncurl -s -X POST \\\n  -H \"Authorization: token $GITHUB_TOKEN\" \\\n  https://api.github.com/graphql \\\n  -d \"{\\\"query\\\": \\\"mutation { enablePullRequestAutoMerge(input: {pullRequestId: \\\\\\\"$PR_NODE_ID\\\\\\\", mergeMethod: SQUASH}) { clientMutationId } }\\\"}\"\n```\n\nThe REST API doesn't support enabling auto-merge - only the GraphQL API has the `enablePullRequestAutoMerge` mutation. You need the PR's `node_id` (not the regular PR number) to use it.",
+      "comp_answer": "According to the skill document, enabling auto-merge via curl uses the **GraphQL API** (not the REST API).\n\nHere's the exact method:\n\n```bash\n# First get the PR's node_id from REST API\nPR_NODE_ID=$(curl -s \\\n  -H \"Authorization: token $GITHUB_TOKEN\" \\\n  https://api.github.com/repos/$OWNER/$REPO/pulls/$PR_NUMBER \\\n  | python3 -c \"import sys,json; print(json.load(sys.stdin)['node_id'])\")\n\n# Then use GraphQL mutation to enable auto-merge\ncurl -s -X POST \\\n  -H \"Authorization: token $GITHUB_TOKEN\" \\\n  https://api.github.com/graphql \\\n  -d \"{\\\"query\\\": \\\"mutation { enablePullRequestAutoMerge(input: {pullRequestId: \\\\\\\"$PR_NODE_ID\\\\\\\", mergeMethod: SQUASH}) { clientMutationId } }\\\"}\"\n```\n\nThe process requires:\n1. Getting the PR's `node_id` from the REST API endpoint\n2. Using GitHub's GraphQL API at `https://api.github.com/graphql` with the `enablePullRequestAutoMerge` mutation",
+      "orig_input_tokens": 3369,
+      "comp_input_tokens": 2741,
+      "token_savings": 628,
+      "judgment": {
+        "orig_score": 9,
+        "comp_score": 9,
+        "verdict": "equivalent",
+        "note": "Both answers correctly identify GraphQL API usage, provide accurate curl commands with enablePullRequestAutoMerge mutation, and explain the node_id requirement. Nearly identical in accuracy and completeness."
+      }
+    }
+  ]
+}

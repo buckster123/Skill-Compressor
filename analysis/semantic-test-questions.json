@@ -1,0 +1,152 @@
+{
+  "cerebrocortex": [
+    {
+      "id": "cc1",
+      "question": "What are the exact weights in the recall ranking blend? List all 4 signals with their percentages.",
+      "expected": "35% vector similarity, 30% ACT-R activation, 20% FSRS retrievability, 15% salience",
+      "type": "numeric_precision"
+    },
+    {
+      "id": "cc2", 
+      "question": "What weight should a 'causal' link have, and what weight should a 'contradicts' link have?",
+      "expected": "causal: 0.9, contradicts: 0.3",
+      "type": "numeric_precision"
+    },
+    {
+      "id": "cc3",
+      "question": "What are the 6 memory types supported by CerebroCortex?",
+      "expected": "episodic, semantic, procedural, affective, prospective, schematic",
+      "type": "enum_completeness"
+    },
+    {
+      "id": "cc4",
+      "question": "What are the 4 memory durability layers and their half-lives?",
+      "expected": "Sensory (6hr), Working (3-day), Long-Term (30-day), Cortex (permanent)",
+      "type": "technical_detail"
+    },
+    {
+      "id": "cc5",
+      "question": "What are the 6 phases of the Dream Engine consolidation?",
+      "expected": "Replay, Cluster, Abstract, Prune, Promote, REM Recombine",
+      "type": "enum_completeness"
+    },
+    {
+      "id": "cc6",
+      "question": "What 3 things should you do at the start of every session?",
+      "expected": "session_recall, list_intentions, check_inbox",
+      "type": "procedural"
+    },
+    {
+      "id": "cc7",
+      "question": "What is the alias relationship between memory_store and remember?",
+      "expected": "memory_store is identical/alias of remember, memory_search is identical/alias of recall",
+      "type": "alias_awareness"
+    },
+    {
+      "id": "cc8",
+      "question": "How many accesses are needed to promote a memory from Working to Long-Term, and how old must it be?",
+      "expected": "5+ accesses, 24h+ old",
+      "type": "numeric_precision"
+    },
+    {
+      "id": "cc9",
+      "question": "What salience range indicates 'Critical' importance, and give an example?",
+      "expected": "0.8-1.0, examples: user corrections, security issues, core preferences",
+      "type": "range_spec"
+    },
+    {
+      "id": "cc10",
+      "question": "What are the 4 episode step roles?",
+      "expected": "event (default), context, outcome, reflection",
+      "type": "enum_completeness"
+    }
+  ],
+  "systematic-debugging": [
+    {
+      "id": "sd1",
+      "question": "What is the 'Rule of Three' threshold, and what should you do when you hit it?",
+      "expected": "After 3+ failed fixes, stop and question the architecture. Don't attempt Fix #4 without architectural discussion.",
+      "type": "procedural"
+    },
+    {
+      "id": "sd2",
+      "question": "What are the first-time fix rates for systematic vs random approaches?",
+      "expected": "Systematic: 95%, Random: 40%",
+      "type": "numeric_precision"
+    },
+    {
+      "id": "sd3",
+      "question": "What are the 4 phases of systematic debugging, in order?",
+      "expected": "1. Root Cause Investigation, 2. Pattern Analysis, 3. Hypothesis and Testing, 4. Implementation",
+      "type": "enum_completeness"
+    },
+    {
+      "id": "sd4",
+      "question": "What Hermes tools should be used during Phase 1 investigation?",
+      "expected": "search_files, read_file, terminal, web_search/web_extract",
+      "type": "tool_knowledge"
+    },
+    {
+      "id": "sd5",
+      "question": "What are the 6 items on the Phase 1 completion checklist?",
+      "expected": "Error messages read/understood, issue reproduced, recent changes reviewed, evidence gathered, problem isolated, root cause hypothesis formed",
+      "type": "procedural"
+    },
+    {
+      "id": "sd6",
+      "question": "What patterns indicate an architectural problem rather than a simple bug?",
+      "expected": "Each fix reveals new shared state/coupling in different places, fixes require massive refactoring, each fix creates new symptoms elsewhere",
+      "type": "technical_detail"
+    },
+    {
+      "id": "sd7",
+      "question": "How long does systematic debugging typically take vs random fixes?",
+      "expected": "Systematic: 15-30 minutes, Random: 2-3 hours",
+      "type": "numeric_precision"
+    }
+  ],
+  "github-pr-workflow": [
+    {
+      "id": "gh1",
+      "question": "What are the 5 branch naming prefixes and what are they for?",
+      "expected": "feat/ (features), fix/ (bugs), refactor/ (restructuring), docs/ (documentation), ci/ (CI/CD)",
+      "type": "enum_completeness"
+    },
+    {
+      "id": "gh2",
+      "question": "What are the 3 merge methods available via the GitHub API?",
+      "expected": "merge (merge commit), squash, rebase",
+      "type": "enum_completeness"
+    },
+    {
+      "id": "gh3",
+      "question": "What is the GitHub API endpoint for creating a pull request?",
+      "expected": "https://api.github.com/repos/$OWNER/$REPO/pulls (POST)",
+      "type": "api_knowledge"
+    },
+    {
+      "id": "gh4",
+      "question": "What are the conventional commit types?",
+      "expected": "feat, fix, refactor, docs, test, ci, chore, perf",
+      "type": "enum_completeness"
+    },
+    {
+      "id": "gh5",
+      "question": "How do you check out someone else's PR without gh CLI?",
+      "expected": "git fetch origin pull/N/head:pr-N && git checkout pr-N",
+      "type": "procedural"
+    },
+    {
+      "id": "gh6",
+      "question": "What is the auto-fix CI loop pattern? How many attempts before asking the user?",
+      "expected": "Check status → read logs → fix code → commit/push → re-check. Up to 3 attempts, then ask user.",
+      "type": "procedural"
+    },
+    {
+      "id": "gh7",
+      "question": "How do you enable auto-merge via curl? Which API does it use?",
+      "expected": "Uses GraphQL API (not REST). POST to api.github.com/graphql with enablePullRequestAutoMerge mutation.",
+      "type": "api_knowledge"
+    }
+  ]
+}

@@ -40,11 +40,31 @@ For these, light editing is offered instead of aggressive structural compression
 
 ## Typical results
 
+Tested against 3 diverse Hermes Agent skills using tiktoken (cl100k_base) and a 24-question semantic equivalence evaluation:
+
 | Input | Original | Compressed | Reduction |
 |---|---|---|---|
-| CerebroCortex memory skill (original test case) | ~5,200 tokens | ~3,000 tokens | ~43% |
+| CerebroCortex (46 MCP tools, tables, enums, weights) | 4,956 tokens | 3,715 tokens | 25.0% |
+| Systematic Debugging (4-phase methodology, pedagogical) | 2,498 tokens | 1,725 tokens | 30.9% |
+| GitHub PR Workflow (CLI commands, API URLs, code blocks) | 2,895 tokens | 2,308 tokens | 20.3% |
+| **Total** | **10,349** | **7,748** | **25.1%** |
 
-Your mileage will vary by content type. Skills heavy in tables, tool lists, and repeated prefixes compress hardest. Prose-heavy skills see less — that's by design.
+### Semantic equivalence
+
+Compressed skills were tested with 24 technical questions (numeric precision, enum completeness, API knowledge, procedural workflows) answered by Claude Sonnet using each version as context:
+
+| Metric | Value |
+|---|---|
+| Average original score | 9.7/10 |
+| Average compressed score | 9.6/10 |
+| Equivalent answers | 18/24 (75%) |
+| Original better | 3/24 (12.5%) |
+| Compressed better | 3/24 (12.5%) |
+| Both wrong | 0/24 (0%) |
+
+**Zero loss on:** numeric precision, enum completeness, range specifications, API knowledge.
+
+See [`analysis/REPORT.md`](analysis/REPORT.md) for the full evidence report, methodology, per-question breakdowns, and system-wide projections for Hermes Agent.
 
 ## Beyond skills
 

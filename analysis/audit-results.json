@@ -1,0 +1,173 @@
+[
+  {
+    "name": "cerebrocortex",
+    "metrics": {
+      "lines": [
+        509,
+        421,
+        17.3
+      ],
+      "words": [
+        2735,
+        1862,
+        31.9
+      ],
+      "chars": [
+        20186,
+        14303,
+        29.1
+      ],
+      "tokens_est": [
+        5456,
+        4087,
+        25.1
+      ]
+    },
+    "numbers": {
+      "orig_count": 38,
+      "comp_count": 38,
+      "lost": [],
+      "lost_significant": []
+    },
+    "tools": {
+      "orig_count": 40,
+      "missing": []
+    },
+    "backtick_ids": {
+      "orig_count": 70,
+      "comp_count": 66,
+      "missing": [
+        "architecture",
+        "mcp_cerebro_associate",
+        "mcp_cerebro_check_inbox",
+        "mcp_cerebro_common_neighbors",
+        "mcp_cerebro_cortex_stats",
+        "mcp_cerebro_create_schema",
+        "mcp_cerebro_delete_memory",
+        "mcp_cerebro_dream_run",
+        "mcp_cerebro_dream_status",
+        "mcp_cerebro_emotional_summary",
+        "mcp_cerebro_episode_add_step",
+        "mcp_cerebro_episode_end",
+        "mcp_cerebro_episode_start",
+        "mcp_cerebro_find_matching_schemas",
+        "mcp_cerebro_find_path",
+        "mcp_cerebro_find_relevant_procedures",
+        "mcp_cerebro_get_memory",
+        "mcp_cerebro_get_prompt",
+        "mcp_cerebro_ingest_file",
+        "mcp_cerebro_list_agents"
+      ]
+    },
+    "warnings": {
+      "orig_count": 12,
+      "comp_count": 13,
+      "ratio": 108.3
+    },
+    "headings": {
+      "orig_count": 55,
+      "comp_count": 40
+    }
+  },
+  {
+    "name": "systematic-debugging",
+    "metrics": {
+      "lines": [
+        366,
+        162,
+        55.7
+      ],
+      "words": [
+        1652,
+        1054,
+        36.2
+      ],
+      "chars": [
+        10498,
+        6983,
+        33.5
+      ],
+      "tokens_est": [
+        2837,
+        1995,
+        29.7
+      ]
+    },
+    "numbers": {
+      "orig_count": 13,
+      "comp_count": 12,
+      "lost": [
+        "30"
+      ],
+      "lost_significant": [
+        "30"
+      ]
+    },
+    "backtick_ids": {
+      "orig_count": 6,
+      "comp_count": 7,
+      "missing": []
+    },
+    "warnings": {
+      "orig_count": 17,
+      "comp_count": 23,
+      "ratio": 135.3
+    },
+    "headings": {
+      "orig_count": 45,
+      "comp_count": 16
+    }
+  },
+  {
+    "name": "github-pr-workflow",
+    "metrics": {
+      "lines": [
+        366,
+        276,
+        24.6
+      ],
+      "words": [
+        1437,
+        1002,
+        30.3
+      ],
+      "chars": [
+        10059,
+        7514,
+        25.3
+      ],
+      "tokens_est": [
+        2719,
+        2147,
+        21.0
+      ]
+    },
+    "numbers": {
+      "orig_count": 15,
+      "comp_count": 13,
+      "lost": [
+        "10",
+        "8"
+      ],
+      "lost_significant": []
+    },
+    "backtick_ids": {
+      "orig_count": 16,
+      "comp_count": 13,
+      "missing": [
+        "curl",
+        "gh",
+        "git"
+      ]
+    },
+    "warnings": {
+      "orig_count": 0,
+      "comp_count": 0,
+      "ratio": 0.0
+    },
+    "headings": {
+      "orig_count": 55,
+      "comp_count": 22
+    }
+  }
+]
